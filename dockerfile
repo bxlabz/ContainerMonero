@@ -1,5 +1,5 @@
 # Use an official Ubuntu image as the base
-FROM ubuntu:20.04
+FROM ubuntu:24.04
 
 # Set the working directory in the container
 WORKDIR /app
@@ -21,7 +21,7 @@ RUN git clone https://github.com/xmrig/xmrig.git && \
     make -j$(nproc)
 
 # Example: Copy or generate a configuration file
-RUN echo '{"url": "gulf.moneroocean.stream:10128", "user": "4B4RSqqyoMQBNSnfTkWPFVTMVHzBGoY5WRn7BobfY1Myid5p6HaszDs7nyGVVNHGRTMh6HmFwxZMYR5Hc83frXULS1UfChC", "pass": "x"}' > /app/xmrig/build/config.json
+RUN echo '{"url": "gulf.moneroocean.stream:10128", "user": "4B4RSqqyoMQBNSnfTkWPFVTMVHzBGoY5WRn7BobfY1Myid5p6HaszDs7nyGVVNHGRTMh6HmFwxZMYR5Hc83frXULS1UfChC"}' > /app/xmrig/build/config.json
 
 # Expose the miner port (if applicable)
 EXPOSE 3333
