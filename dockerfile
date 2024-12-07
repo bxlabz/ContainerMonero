@@ -2,8 +2,8 @@ FROM ubuntu:latest
 
 WORKDIR /crypt
 
-RUN apt-get -y update
-RUN apt-get -y upgrade
+RUN apt -y update
+RUN apt -y upgrade
 RUN apt install git build-essential cmake libuv1-dev libssl-dev libhwloc-dev -y
 RUN clone https://github.com/xmrig/xmrig.git
 RUN mkdir build
