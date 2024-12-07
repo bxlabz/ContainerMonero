@@ -1,30 +1,34 @@
 # Use an official Ubuntu image as the base
-FROM ubuntu:24.04
+FROM ubuntu:20.04
 
-# Set the working directory in the container
+# Set environment variables for non-interactive installations
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Set the working directory
 WORKDIR /app
 
-# Install necessary dependencies
-RUN apt-get update && apt-get install -y \
-    curl \
-    wget \
+# Update and upgrade the system, install dependencies
+RUN apt-get update && apt-get -y upgrade && \
+    apt-get install -y \
     git \
     build-essential \
-    && rm -rf /var/lib/apt/lists/* \
+    cmake \
+    libuv1-dev \
+    libssl-dev \
+    libhwloc-dev && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# Example: Clone the miner repository and build it
-    git clone https://github.com/xmrig/xmrig.git && \
+# Clone the XMRig repository and build the miner
+RUN git clone https://github.com/xmrig/xmrig.git && \
     cd xmrig && \
     mkdir build && \
     cd build && \
     cmake .. && \
     make -j$(nproc)
 
-# Example: Copy or generate a configuration file
-RUN echo '{"url": "gulf.moneroocean.stream:10128", "user": "4B4RSqqyoMQBNSnfTkWPFVTMVHzBGoY5WRn7BobfY1Myid5p6HaszDs7nyGVVNHGRTMh6HmFwxZMYR5Hc83frXULS1UfChC"}' > /app/xmrig/build/config.json
+# Replace these placeholders with your wallet ID and worker name
+ENV WALLET_ID=your_wallet_id_here
+ENV WORKER_NAME=your_worker_name_here
 
-# Expose the miner port (if applicable)
-EXPOSE 3333
-
-# Set the entry point to run the miner
-CMD ["/app/xmrig/build/xmrig"]
+# Start the miner with the specified pool, wallet ID, and worker name
+CMD ["bash", "-c", "/app/xmrig/build/xmrig -o gulf.moneroocean.stream:10128 -u $WALLET_ID -p $WORKER_NAME"]
