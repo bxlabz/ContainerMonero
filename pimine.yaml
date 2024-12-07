@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pimine
+  labels:
+    app: pimine
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: pimine
+  template:
+    metadata:
+      labels:
+        app: pimine
+    spec:
+      containers:
+      - name: pimine
+        image: pimine:latest  # Use the image you built locally
+        env:
+        - name: WALLET_ID
+          value: "4B4RSqqyoMQBNSnfTkWPFVTMVHzBGoY5WRn7BobfY1Myid5p6HaszDs7nyGVVNHGRTMh6HmFwxZMYR5Hc83frXULS1UfChC"
+        - name: WORKER_NAME
+          value: "pimine"
+        command: ["/app/xmrig/build/xmrig"]
+        args: ["-o", "gulf.moneroocean.stream:10128", "-u", "$(WALLET_ID)", "-p", "$(WORKER_NAME)"]
+        resources:
+          limits:
+            cpu: "1"
+            memory: "500Mi"
+          requests:
+            cpu: "500m"
+            memory: "256Mi"
+        ports:
+        - containerPort: 10128
