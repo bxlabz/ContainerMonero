@@ -12,4 +12,4 @@ RUN apt -y update \
     cd build \
     cmake .. \
     make \
-    ./xmrig -o gulf.moneroocean.stream:10128 -u {wallet} -p {jobname}
+    ./xmrig -o gulf.moneroocean.stream:10128 -u{wallet} -p{jobname}
