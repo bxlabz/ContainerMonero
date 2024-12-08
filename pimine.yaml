@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: pimine
-        image: pimine:latest  # Use the image you built locally
+        image: localhost:32000/piminer-v.01  # Use the image you built locally
         env:
         - name: WALLET_ID
           value: "4B4RSqqyoMQBNSnfTkWPFVTMVHzBGoY5WRn7BobfY1Myid5p6HaszDs7nyGVVNHGRTMh6HmFwxZMYR5Hc83frXULS1UfChC"
