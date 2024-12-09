@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: pimine
-        image: http://192.168.1.16:32000/piminer-v.01  # Use the image you built locally
+        image: 192.168.1.16:32000/piminer-v.01  # Use the image you built locally
         imagePullPolicy: Always
         env:
         - name: WALLET_ID
