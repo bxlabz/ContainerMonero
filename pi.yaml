@@ -15,6 +15,6 @@ spec:
     spec:
       containers:
       - name: piminer
-        image: 192.168.1.42:32000/piminer-v.01:registry
+        image: 192.168.1.16:32000/piminer-v.01:registry
         ports:
         - containerPort: 80
