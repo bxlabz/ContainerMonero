@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: piminer
+  labels:
+    app: piminer
+spec:
+  selector:
+    matchLabels:
+      app: piminer
+  template:
+    metadata:
+      labels:
+        app: piminer
+    spec:
+      containers:
+      - name: piminer
+        image: 192.168.1.42:32000/piminer-v.01:registry
+        ports:
+        - containerPort: 80
