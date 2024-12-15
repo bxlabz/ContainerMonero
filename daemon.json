@@ -1,0 +1,6 @@
+
+{
+    "comment" : ["this file goes in the following location on each k8 node ","$/etc/docker"],
+    "insecure-registries" : ["192.168.1.16:32000","192.168.1.42:32000","localhost:32000"]
+    
+}

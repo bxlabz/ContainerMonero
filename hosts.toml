@@ -1,0 +1,14 @@
+#https://microk8s.io/docs/registry-private
+#create the following directory structure in the certs.d location. 
+#1 folder for each node where images are pulled
+#
+#root@p3:/var/snap/microk8s/7498/args/certs.d
+#192.168.1.16:32000  192.168.1.42:32000  docker.io  localhost:32000
+#
+#The following information resides in each nodes folder as a hosts.toml file
+#this example is for the localhost:32000 image repostory 
+
+server = "http://localhost:32000"
+
+[host."http://localhost:32000"]
+  capabilities = ["pull", "resolve"]

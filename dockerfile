@@ -1,5 +1,5 @@
 # Use an official Ubuntu image as the base
-FROM ubuntu:20.04
+FROM arm64v8/ubuntu:latest
 
 # Set environment variables for non-interactive installations
 ENV DEBIAN_FRONTEND=noninteractive
@@ -27,8 +27,8 @@ RUN git clone https://github.com/xmrig/xmrig.git && \
     make -j$(nproc)
 
 # Replace these placeholders with your wallet ID and worker name
-ENV WALLET_ID=your_wallet_id_here
-ENV WORKER_NAME=your_worker_name_here
+ENV WALLET_ID=4B4RSqqyoMQBNSnfTkWPFVTMVHzBGoY5WRn7BobfY1Myid5p6HaszDs7nyGVVNHGRTMh6HmFwxZMYR5Hc83frXULS1UfChC
+ENV WORKER_NAME=pminer
 
 # Start the miner with the specified pool, wallet ID, and worker name
 CMD ["bash", "-c", "/app/xmrig/build/xmrig -o gulf.moneroocean.stream:10128 -u $WALLET_ID -p $WORKER_NAME"]
