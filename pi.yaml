@@ -4,12 +4,8 @@ metadata:
   name: piminer
   labels:
     app: piminer
-env:
-- name: WALLET_ID
-  value: "4B4RSqqyoMQBNSnfTkWPFVTMVHzBGoY5WRn7BobfY1Myid5p6HaszDs7nyGVVNHGRTMh6HmFwxZMYR5Hc83frXULS1UfChC"
-- name: WORKER_NAME
-  value: "piminer"
 spec:
+  replicas: 1
   selector:
     matchLabels:
       app: piminer
