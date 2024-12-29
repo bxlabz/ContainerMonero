@@ -1,5 +1,5 @@
 # ContainerMonero
-This is an experiment in mining the crypto currency monero using MicroK8s (https://microk8s.io/docs) & Xmirig (https://github.com/xmrig/xmrig).
+This is an experiment in mining the crypto currency monero using MicroK8s (https://microk8s.io/docs), Xmirig (https://github.com/xmrig/xmrig) and the Monero Ocean mining Pool (https://moneroocean.stream/).
 Use the dockerfile to create an image (my wallet ID is hardcoded). 
 Use pi.yaml to deploy the image in MicroK8s.
 A local insecure registry was used to store the images. (https://microk8s.io/docs/registry-built-in)
