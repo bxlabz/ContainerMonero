@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: piminer
+  name: amdk8miner
   labels:
-    app: piminer
+    app: amdk8miner
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: piminer
+      app: amdk8miner
   template:
     metadata:
       labels:
-        app: piminer
+        app: amdk8miner
     spec:
       containers:
-      - name: piminer
-        image: 192.168.1.16:32000/piminer-v.01:registry
+      - name: amdk8miner
+        image: 192.168.1.35:32000/adminer:registry
         ports:
         - containerPort: 80
