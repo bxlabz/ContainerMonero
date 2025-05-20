@@ -19,7 +19,7 @@ RUN apt-get update && apt-get -y upgrade && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Clone the XMRig repository and build the miner
-RUN git clone https://github.com/xmrig/xmrig.git && \
+RUN git clone https://github.com/bxlabz/xmrig.git && \
     cd xmrig && \
     mkdir build && \
     cd build && \
