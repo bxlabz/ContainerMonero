@@ -1,7 +1,7 @@
 # Use an official Ubuntu image as the base
 # FROM arm64v8/ubuntu:latest ##for PI
 
-FROM ubunut:latest
+FROM ubuntu:latest
 
 # Set environment variables for non-interactive installations
 ENV DEBIAN_FRONTEND=noninteractive
