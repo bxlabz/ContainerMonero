@@ -1,23 +1,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: amdk8miner
+  name: k8miner
   labels:
-    app: amdk8miner
+    app: k8miner
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: amdk8miner
+      app: k8miner
   template:
     metadata:
       labels:
-        app: amdk8miner
+        app: k8miner
     spec:
       containers:
-      - name: amdk8miner
-        image: 192.168.1.35:32000/adminer:registry
-        ports:
-        - containerPort: 80
-        securityContext:
-         privileged: true
+        - name: amdk8miner
+          image: 192.168.1.27:32000/k8miner:registry
+          ports:
+            - containerPort: 80
+          securityContext:
+            privileged: true
+
