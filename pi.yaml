@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: amdk8miner
-        image: 192.168.1.35:32000/adminer:registry
+        image: 192.168.1.45:32000/k8miner:registry
         ports:
         - containerPort: 80
         securityContext:
