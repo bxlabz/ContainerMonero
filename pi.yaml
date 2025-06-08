@@ -15,7 +15,7 @@ spec:
         app: k8miner
     spec:
       containers:
-        - name: amdk8miner
+        - name: k8miner
           image: 192.168.1.27:32000/k8miner:registry
           ports:
             - containerPort: 80
